@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Roblox Login Demo</title>
+  <title>Game Login Demo</title>
 
   <style>
     * {
@@ -16,33 +17,51 @@
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       background: #17191c;
-      color: white;
+      color: #fff;
 
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .login-box,
-    .success-box {
+    .card {
       width: 390px;
+      padding: 36px 34px;
       background: #24272b;
       border-radius: 10px;
-      padding: 38px 34px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
       text-align: center;
     }
 
+    .logo {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 9px;
+      margin-bottom: 25px;
+      border-radius: 5px;
+      background: #3a3e44;
+      color: #c9c9c9;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
     h1 {
-      margin: 0 0 28px;
-      font-size: 25px;
+      margin: 0 0 25px;
+      font-size: 23px;
     }
 
     .input {
       width: 100%;
       height: 48px;
-      margin-bottom: 14px;
       padding: 0 14px;
+      margin-bottom: 14px;
 
       border: 1px solid #44484e;
       border-radius: 7px;
@@ -65,7 +84,7 @@
     .login-button {
       width: 100%;
       height: 48px;
-      margin-top: 6px;
+      margin-top: 5px;
 
       border: none;
       border-radius: 7px;
@@ -82,15 +101,6 @@
       background: #e5e5e5;
     }
 
-    .forgot {
-      display: block;
-      margin-top: 18px;
-
-      color: #bdbdbd;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
     .divider {
       display: flex;
       align-items: center;
@@ -98,7 +108,7 @@
       margin: 25px 0;
 
       color: #777;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .divider::before,
@@ -109,7 +119,7 @@
       background: #3d4146;
     }
 
-    .create-button {
+    .guest-button {
       width: 100%;
       height: 46px;
 
@@ -123,65 +133,51 @@
       cursor: pointer;
     }
 
-    .demo {
-      margin-top: 22px;
-      color: #777;
-      font-size: 11px;
+    .guest-button:hover {
+      background: #2d3034;
     }
 
-    .success-box {
+    .notice {
+      margin-top: 20px;
+      color: #888;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .success {
       display: none;
     }
 
     .success-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    .success-box h1 {
+      font-size: 52px;
       margin-bottom: 12px;
     }
 
-    .success-text {
+    .success p {
       color: #aaa;
       font-size: 14px;
-      margin-bottom: 25px;
-    }
-
-    .continue-button {
-      width: 100%;
-      height: 46px;
-
-      border: none;
-      border-radius: 7px;
-
-      background: white;
-      color: #17191c;
-
-      font-weight: bold;
-      cursor: pointer;
+      line-height: 1.5;
+      margin-bottom: 24px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- PAGINA DE LOGIN -->
-  <div class="login-box" id="loginPage">
+  <!-- DEMO LOGIN -->
+  <div class="card" id="loginPage">
 
-    <h1>Log in to Roblox</h1>
+    <div class="logo">GAME</div>
+
+    <div class="badge">UNOFFICIAL DEMO</div>
+
+    <h1>Log In</h1>
 
     <input
+      id="username"
       class="input"
       type="text"
       placeholder="Username"
-      autocomplete="off"
-    >
-
-    <input
-      class="input"
-      type="password"
-      placeholder="Password"
       autocomplete="off"
     >
 
@@ -189,32 +185,66 @@
       Log In
     </button>
 
-    <a class="forgot" href="#" onclick="return false;">
-      Forgot Password or Username?
-    </a>
+    <div class="divider">OR</div>
 
-    <div class="divider">
-      OR
-    </div>
-
-    <button class="create-button" onclick="return false;">
-      Create Account
+    <button class="guest-button" onclick="guestLogin()">
+      Continue as Guest
     </button>
 
-    <div class="demo">
-      Demo neoficial — datele introduse nu sunt salvate sau trimise.
+    <div class="notice">
+      Demo interface only.<br>
+      No passwords are requested, saved, or transmitted.
     </div>
 
   </div>
 
 
-  <!-- PAGINA DE SUCCES -->
-  <div class="success-box" id="successPage">
+  <!-- SUCCESS -->
+  <div class="card success" id="successPage">
 
     <div class="success-icon">✓</div>
 
-    <h1>Login Successful!</h1>
+    <h1>Welcome!</h1>
 
-    <div class="success-text">
-      Ai intrat cu succes în jocul demonstrativ.
-    </
+    <p id="welcomeText">
+      Demo started successfully.
+    </p>
+
+    <button class="login-button" onclick="location.reload()">
+      Back
+    </button>
+
+  </div>
+
+
+  <script>
+    function loginDemo() {
+      const username =
+        document.getElementById("username").value.trim();
+
+      if (!username) {
+        alert("Please enter a username.");
+        return;
+      }
+
+      showSuccess(
+        "Welcome, " + username + "! This is only a demo."
+      );
+    }
+
+    function guestLogin() {
+      showSuccess(
+        "You entered the demo as a guest."
+      );
+    }
+
+    function showSuccess(message) {
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("successPage").style.display = "block";
+      document.getElementById("welcomeText").textContent = message;
+    }
+  </script>
+
+</body>
+</html>
+```
