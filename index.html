@@ -14,109 +14,115 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #24262d;
+      background: #18191c;
       font-family: Arial, Helvetica, sans-serif;
-      color: white;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .login-box {
-      width: 360px;
-      padding: 28px 22px 30px;
+      width: 380px;
+      padding: 32px 28px;
+      background: #232428;
+      border: 1px solid #303136;
+      border-radius: 8px;
       text-align: center;
-      background: #000;
-      border-radius: 10px;
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: 31px;
+      margin: 0 0 24px;
+      font-size: 30px;
       font-weight: 700;
-      color: white;
+      color: #fff;
     }
 
     input {
       width: 100%;
-      height: 42px;
-      margin: 8px 0;
-      padding: 0 12px;
-      border-radius: 7px;
-      border: 1px solid #505050;
-      background: #000;
-      color: white;
-      font-size: 16px;
+      height: 44px;
+      margin: 6px 0;
+      padding: 0 13px;
+      border: 1px solid #3f4148;
+      border-radius: 6px;
+      background: #111214;
+      color: #fff;
+      font-size: 15px;
       outline: none;
     }
 
     input::placeholder {
-      color: #aaa;
-      opacity: 1;
+      color: #b8b8b8;
     }
 
     input:focus {
-      border-color: #aaa;
+      border-color: #777;
     }
 
     .login-btn {
       width: 100%;
-      height: 40px;
-      margin-top: 8px;
-      border: 1px solid white;
-      border-radius: 7px;
+      height: 44px;
+      margin-top: 10px;
+      border: 1px solid #fff;
+      border-radius: 6px;
       background: transparent;
-      color: white;
-      font-size: 16px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
     }
 
     .login-btn:hover {
-      background: #202020;
+      background: #303136;
     }
 
     .forgot {
       display: block;
-      margin: 25px 0 30px;
-      color: white;
-      font-weight: bold;
+      margin: 22px 0 25px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 16px;
+    }
+
+    .forgot:hover,
+    .signup:hover {
+      text-decoration: underline;
     }
 
     .divider {
       height: 1px;
-      background: #333;
+      background: #3a3b40;
       margin-bottom: 18px;
     }
 
     .secondary-btn {
       width: 100%;
-      height: 40px;
-      margin: 6px 0;
+      height: 42px;
+      margin: 5px 0;
       border: 0;
-      border-radius: 7px;
-      background: #252525;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
+      border-radius: 6px;
+      background: #393a40;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
     }
 
     .secondary-btn:hover {
-      background: #333;
+      background: #45464d;
     }
 
     .signup {
       display: block;
-      margin-top: 36px;
-      color: white;
-      font-size: 16px;
+      margin-top: 28px;
+      color: #fff;
+      font-size: 14px;
       text-decoration: none;
     }
 
     .signup span {
-      font-weight: bold;
+      font-weight: 700;
     }
   </style>
 </head>
