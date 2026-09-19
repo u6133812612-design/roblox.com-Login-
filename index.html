@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Game Login Demo</title>
+  <title>Game Demo Login</title>
 
   <style>
     * {
@@ -15,89 +14,76 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #17191c;
-      color: #fff;
-
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: Arial, sans-serif;
+      background: #17191c;
+      color: white;
     }
 
     .card {
-      width: 390px;
-      padding: 36px 34px;
+      width: min(390px, calc(100% - 32px));
+      padding: 34px;
       background: #24272b;
       border-radius: 10px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
       text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .45);
     }
 
     .logo {
       font-size: 30px;
       font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .badge {
+    .demo-label {
       display: inline-block;
-      padding: 4px 9px;
-      margin-bottom: 25px;
+      padding: 5px 9px;
+      margin-bottom: 24px;
       border-radius: 5px;
       background: #3a3e44;
-      color: #c9c9c9;
+      color: #ccc;
       font-size: 10px;
       font-weight: bold;
       letter-spacing: 1px;
     }
 
     h1 {
-      margin: 0 0 25px;
-      font-size: 23px;
+      margin: 0 0 24px;
+      font-size: 24px;
     }
 
     .input {
       width: 100%;
       height: 48px;
-      padding: 0 14px;
       margin-bottom: 14px;
-
+      padding: 0 14px;
       border: 1px solid #44484e;
       border-radius: 7px;
-
+      outline: none;
       background: #191b1e;
       color: white;
-
       font-size: 15px;
-      outline: none;
-    }
-
-    .input::placeholder {
-      color: #999;
     }
 
     .input:focus {
       border-color: #777;
     }
 
-    .login-button {
+    .button {
       width: 100%;
       height: 48px;
-      margin-top: 5px;
-
-      border: none;
+      border: 0;
       border-radius: 7px;
-
       background: white;
       color: #17191c;
-
-      font-size: 15px;
       font-weight: bold;
       cursor: pointer;
+      font-size: 15px;
     }
 
-    .login-button:hover {
+    .button:hover {
       background: #e5e5e5;
     }
 
@@ -105,8 +91,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 25px 0;
-
+      margin: 24px 0;
       color: #777;
       font-size: 11px;
     }
@@ -119,41 +104,33 @@
       background: #3d4146;
     }
 
-    .guest-button {
-      width: 100%;
-      height: 46px;
-
-      border: 1px solid #555;
-      border-radius: 7px;
-
+    .secondary {
       background: transparent;
       color: white;
-
-      font-size: 14px;
-      cursor: pointer;
+      border: 1px solid #555;
     }
 
-    .guest-button:hover {
+    .secondary:hover {
       background: #2d3034;
     }
 
-    .notice {
+    .info {
       margin-top: 20px;
       color: #888;
       font-size: 11px;
       line-height: 1.5;
     }
 
-    .success {
+    #success {
       display: none;
     }
 
-    .success-icon {
+    .check {
       font-size: 52px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .success p {
+    .success-text {
       color: #aaa;
       font-size: 14px;
       line-height: 1.5;
@@ -164,12 +141,10 @@
 
 <body>
 
-  <!-- DEMO LOGIN -->
-  <div class="card" id="loginPage">
+  <main class="card" id="login">
 
     <div class="logo">GAME</div>
-
-    <div class="badge">UNOFFICIAL DEMO</div>
+    <div class="demo-label">UNOFFICIAL DEMO</div>
 
     <h1>Log In</h1>
 
@@ -179,72 +154,21 @@
       type="text"
       placeholder="Username"
       autocomplete="off"
+      maxlength="30"
     >
 
-    <button class="login-button" onclick="loginDemo()">
+    <button class="button" type="button" onclick="startDemo()">
       Log In
     </button>
 
     <div class="divider">OR</div>
 
-    <button class="guest-button" onclick="guestLogin()">
+    <button
+      class="button secondary"
+      type="button"
+      onclick="guestDemo()">
       Continue as Guest
     </button>
 
-    <div class="notice">
-      Demo interface only.<br>
-      No passwords are requested, saved, or transmitted.
-    </div>
-
-  </div>
-
-
-  <!-- SUCCESS -->
-  <div class="card success" id="successPage">
-
-    <div class="success-icon">✓</div>
-
-    <h1>Welcome!</h1>
-
-    <p id="welcomeText">
-      Demo started successfully.
-    </p>
-
-    <button class="login-button" onclick="location.reload()">
-      Back
-    </button>
-
-  </div>
-
-
-  <script>
-    function loginDemo() {
-      const username =
-        document.getElementById("username").value.trim();
-
-      if (!username) {
-        alert("Please enter a username.");
-        return;
-      }
-
-      showSuccess(
-        "Welcome, " + username + "! This is only a demo."
-      );
-    }
-
-    function guestLogin() {
-      showSuccess(
-        "You entered the demo as a guest."
-      );
-    }
-
-    function showSuccess(message) {
-      document.getElementById("loginPage").style.display = "none";
-      document.getElementById("successPage").style.display = "block";
-      document.getElementById("welcomeText").textContent = message;
-    }
-  </script>
-
-</body>
-</html>
+    <div class
 ```
