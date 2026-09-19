@@ -45,7 +45,7 @@
       padding: 0 13px;
       border: 1px solid #3f4148;
       border-radius: 6px;
-      background: #000000;
+      background: #000;
       color: white;
       font-size: 15px;
       outline: none;
@@ -53,7 +53,6 @@
 
     input::placeholder {
       color: #b8b8b8;
-      opacity: 1;
     }
 
     input:focus {
@@ -66,7 +65,7 @@
       margin-top: 10px;
       border: 1px solid #555;
       border-radius: 6px;
-      background: #000000;
+      background: #000;
       color: white;
       font-size: 15px;
       font-weight: 600;
@@ -74,7 +73,7 @@
     }
 
     .login-btn:hover {
-      background: #111111;
+      background: #111;
     }
 
     .forgot {
@@ -84,10 +83,6 @@
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-    }
-
-    .forgot:hover {
-      text-decoration: underline;
     }
 
     .divider {
@@ -124,10 +119,6 @@
     .signup span {
       font-weight: 700;
     }
-
-    .signup:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 
@@ -153,9 +144,9 @@
       Log In
     </button>
 
-    <a href="#" class="forgot">
+    <div class="forgot">
       Forgot Password or Username?
-    </a>
+    </div>
 
     <div class="divider"></div>
 
@@ -167,9 +158,9 @@
       Quick Sign-in
     </button>
 
-    <a href="#" class="signup">
+    <div class="signup">
       Don't have an account? <span>Sign Up</span>
-    </a>
+    </div>
 
   </div>
 
