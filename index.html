@@ -1,101 +1,174 @@
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Login</title>
+  <title>Login Demo</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
+      background: #000000;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #17191c;
-      color: white;
-      font-family: Arial, sans-serif;
     }
 
-    .login {
+    .login-box {
       width: 330px;
-      padding: 32px;
-      background: #24272b;
-      border-radius: 10px;
+      padding: 20px 14px 30px;
       text-align: center;
     }
 
     h1 {
-      margin-bottom: 25px;
+      margin: 0 0 6px;
+      font-size: 31px;
+      font-weight: 700;
+    }
+
+    .demo-text {
+      margin: 0 0 12px;
+      color: #aaa;
+      font-size: 13px;
     }
 
     input {
       width: 100%;
-      height: 45px;
-      margin-bottom: 14px;
+      height: 38px;
+      margin: 8px 0;
       padding: 0 12px;
-      box-sizing: border-box;
-      border: 1px solid #444;
-      border-radius: 6px;
-      background: #191b1e;
+      border-radius: 7px;
+      border: 1px solid #50535d;
+      background: #343740;
       color: white;
+      font-size: 16px;
+      outline: none;
     }
 
-    button {
+    input::placeholder {
+      color: #e5e5e5;
+    }
+
+    input:focus {
+      border-color: #aaa;
+    }
+
+    .login-btn {
       width: 100%;
-      height: 45px;
+      height: 37px;
+      margin-top: 0;
+      border: 1px solid white;
+      border-radius: 7px;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background: #30323a;
+    }
+
+    .forgot {
+      display: block;
+      margin: 25px 0 30px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #3b3d45;
+      margin-bottom: 18px;
+    }
+
+    .secondary-btn {
+      width: 100%;
+      height: 37px;
+      margin: 6px 0;
       border: 0;
-      border-radius: 6px;
-      background: white;
+      border-radius: 7px;
+      background: #3b3e48;
+      color: white;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .demo {
-      margin-top: 18px;
-      color: #999;
-      font-size: 12px;
+    .secondary-btn:hover {
+      background: #454853;
+    }
+
+    .signup {
+      display: block;
+      margin-top: 36px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .signup span {
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="login">
-    <h1>Demo Login</h1>
+  <div class="login-box">
 
-    <form onsubmit="loginDemo(event)">
-      <input
-        id="username"
-        type="text"
-        placeholder="Username"
-        autocomplete="off"
-        required
-      >
+    <h1>Login Demo</h1>
 
-      <input
-        id="password"
-        type="password"
-        placeholder="Password"
-        autocomplete="off"
-        required
-      >
+    <p class="demo-text">
+      Demo only — not affiliated with Roblox
+    </p>
 
-      <button type="submit">Log In</button>
-    </form>
+    <input
+      type="text"
+      placeholder="Username/Email/Phone"
+      autocomplete="off"
+    >
 
-    <div class="demo">
-      DEMO — nu trimite date către un server.
-    </div>
+    <input
+      type="password"
+      placeholder="Password"
+      autocomplete="off"
+    >
+
+    <button class="login-btn" type="button">
+      Log In
+    </button>
+
+    <a href="#" class="forgot">
+      Forgot Password or Username?
+    </a>
+
+    <div class="divider"></div>
+
+    <button class="secondary-btn" type="button">
+      Email Me a One-Time Code
+    </button>
+
+    <button class="secondary-btn" type="button">
+      Quick Sign-in
+    </button>
+
+    <a href="#" class="signup">
+      Don't have an account? <span>Sign Up</span>
+    </a>
+
   </div>
-
-  <script>
-    function loginDemo(event) {
-      event.preventDefault();
-
-      alert("Demo login — datele nu au fost trimise.");
-    }
-  </script>
 
 </body>
 </html>
+```
